@@ -1,0 +1,20 @@
+{
+  "name": "mission-control-fe",
+  "version": "1.0.0",
+  "description": "A project based on AngularJS for FE app and SailsJS for BE app",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Mission",
+    "Control",
+    "Project",
+    "Developers",
+    "Help",
+    "Build",
+    "Tasks"
+  ],
+  "author": "Rui Carvalho",
+  "license": "ISC"
+}
