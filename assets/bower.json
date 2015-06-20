@@ -1,0 +1,29 @@
+{
+  "name": "mission-control-fe",
+  "version": "0.0.0",
+  "authors": [
+    "Rui-Carvalho <rui.carvalho@businessoffashion.com>"
+  ],
+  "description": "A project based on AngularJS for FE app and SailsJS for BE app",
+  "main": "gulpfile.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "Mission",
+    "Control",
+    "Project",
+    "Developers",
+    "Help",
+    "Build",
+    "Tasks"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
