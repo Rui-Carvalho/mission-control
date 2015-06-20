@@ -1,4 +1,6 @@
 etc/nginx.conf
+assets/dist/
+assets/vendor/
 
 ################################################
 ##########  sails.js .gitignore   ##############
