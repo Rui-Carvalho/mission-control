@@ -1,6 +1,13 @@
 angular.module('mcApp', [
+    'ngRoute', 
+    'ngResource', 
+    'ui.bootstrap' 
 
-	'mcApp.home'
+    //App Specific Modules
+	'mcApp.core',
+    'mcApp.home',
+    'mcApp.quickLinks',
+    'mcApp.sideMenu'
 ])
 .config(
 	function() {
