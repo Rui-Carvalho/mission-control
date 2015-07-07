@@ -10,8 +10,12 @@ angular.module('mcApp', [
     'mcApp.sideMenu'
 ])
 .config(
-	function() {
-
+	function($routeProvider) {
+        $routeProvider.when("/quick-links", {
+            controller: "quickLinksController",
+            templateUrl: "/views/ng-views/quick-links.ejs"
+        });
+        $routeProvider.otherwise({ redirectTo: "/" });
 	}
 )
 .run(

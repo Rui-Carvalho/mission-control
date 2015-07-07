@@ -30,26 +30,28 @@ var connect      = require('gulp-connect'),
 
 // --------------------------- CONFIG ---------------------------
 var myJsFiles = [
-        'assets/angular_app/*/config.js',
-        'assets/angular_app/*/*/*.js',
-        'assets/angular_app/app.js'
+        'angular_app/*/config.js',
+        'angular_app/*/*/*.js',
+        'angular_app/app.js'
     ],
     vendorJsFiles = [
-        'assets/vendor/moment/moment.js',
-        'assets/vendor/angular/angular.js',
-        'assets/vendor/angular-resource/angular-resource.js',
-        'assets/vendor/angular-animate/angular-animate.js',
-        'assets/vendor/ngstorage/ngStorage.js',
-        'assets/vendor/angular-bootstrap/ui-bootstrap.js',
-        'assets/vendor/angular-cache/dist/angular-cache.js',
-        'assets/vendor/angular-moment/angular-moment.js',
+        'vendor/moment/moment.js',
+        'vendor/angular/angular.js',
+        'vendor/angular-resource/angular-resource.js',
+        'vendor/angular-animate/angular-animate.js',
+        'vendor/ngstorage/ngStorage.js',
+        'vendor/angular-bootstrap/ui-bootstrap.js',
+        'vendor/angular-cache/dist/angular-cache.js',
+        'vendor/angular-moment/angular-moment.js',
     ],
-    allJsFiles       = myJsFiles.concat(vendorJsFiles),
-    fontList         = ['vendor/boostrap-sass/assets/fonts/bootstrap/*'],
-    scssSource       = 'assets/scss/**/*.scss',
-    injectTargets    = 'assets/css', //template files to be injected with CSS and JS
-    injectJSSources  = 'assets/js/*',
-    injectCSSSources = 'assets/css/*'
+    allJsFiles        = vendorJsFiles.concat(myJsFiles),
+
+    fontList          = ['vendor/boostrap-sass/assets/fonts/bootstrap/*'],
+    scssSource        = 'scss/**/*.scss',
+    injectCssInThis   = '../views/cssFiles.ejs', //template files to be injected with CSS and JS
+    injectJsInThis    = '../views/jsScripts.ejs',
+    injectDestination = '../views/',
+    injectCSSSources  = 'css/*'
     ;
 
 
@@ -61,23 +63,33 @@ gulp.task('lint-js', function() {
     .pipe(debug({title: 'linting js file:'}))
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
-    .pipe(jshint.reporter('fail'));
+//    .pipe(jshint.reporter('fail'));
 });
+
 
 //--Inject CSS files in HTML in raw for development--
 gulp.task('dev-inject-css', function () {
-  return gulp.src(injectTargets)
+  return gulp.src(injectCssInThis)
     .pipe(inject(gulp.src(injectCSSSources, {read: false}), {relative: true}))
     .pipe(gulp.dest(injectTargets));
 });
 
 
+//--Inject JS files in HTML in raw for development--
+gulp.task('dev-inject-js', function () {
+  return gulp.src(injectJsInThis)
+    .pipe(inject(gulp.src(allJsFiles)))
+    .pipe(gulp.dest(injectDestination));
+});
+
+
+
 // =====================Terminar isto=====================
 
-// gulp.task('clean', function() {
-//   return gulp.src('./dist/*')
-//     .pipe(clean({force: true}));
-// });
+/*gulp.task('clean', function() {
+   return gulp.src('./dist/*')
+     .pipe(clean({force: true}));
+});*/
 
 // gulp.task('minify-css', function() {
 //   var opts = {comments:true,spare:true};
@@ -130,12 +142,20 @@ gulp.task('dev',
   function () {
       runSequence(
           ['lint-js'],
+          ['dev-inject-js'] //['dev-inject-js','dev-inject-css'],
+      );
+  }
+);
+
+gulp.task('dev-run',
+  function () {
+      runSequence(
+          ['lint-js'],
           //['dev-inject-js','dev-inject-css'],
           ['connect']
       );
   }
 );
-
 
 
 // Build for Production Tasks ---------------------------
