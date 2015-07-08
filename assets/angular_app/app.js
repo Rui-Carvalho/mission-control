@@ -1,7 +1,7 @@
 angular.module('mcApp', [
     'ngRoute', 
     'ngResource', 
-    'ui.bootstrap' 
+    'ui.bootstrap',
 
     //App Specific Modules
 	'mcApp.core',
@@ -11,11 +11,14 @@ angular.module('mcApp', [
 ])
 .config(
 	function($routeProvider) {
-        $routeProvider.when("/quick-links", {
-            controller: "quickLinksController",
-            templateUrl: "/views/ng-views/quick-links.ejs"
-        });
-        $routeProvider.otherwise({ redirectTo: "/" });
+        $routeProvider
+            .when("/quick-links", {
+                controller: "quickLinksController",
+                templateUrl: "templates/quick-links/quick-links.view.ejs"
+            })
+            .otherwise({ 
+                redirectTo: "/" 
+            });
 	}
 )
 .run(

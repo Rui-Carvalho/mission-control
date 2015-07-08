@@ -1,4 +1,4 @@
-angular.module('mcApp.mainMenu',
+angular.module('mcApp.sideMenu',
     [
     ]
 );

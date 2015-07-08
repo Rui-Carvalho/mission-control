@@ -43,6 +43,7 @@ var myJsFiles = [
         'vendor/angular-bootstrap/ui-bootstrap.js',
         'vendor/angular-cache/dist/angular-cache.js',
         'vendor/angular-moment/angular-moment.js',
+        'vendor/angular-route/angular-route.js'
     ],
     allJsFiles        = vendorJsFiles.concat(myJsFiles),
 
@@ -77,9 +78,11 @@ gulp.task('dev-inject-css', function () {
 
 //--Inject JS files in HTML in raw for development--
 gulp.task('dev-inject-js', function () {
-  return gulp.src(injectJsInThis)
-    .pipe(inject(gulp.src(allJsFiles)))
-    .pipe(gulp.dest(injectDestination));
+  var target = gulp.src(injectJsInThis);
+  var sources = gulp.src(allJsFiles, {read: false});
+
+  return target.pipe(inject(sources))
+    .pipe(gulp.dest(injectDestination)); 
 });
 
 
