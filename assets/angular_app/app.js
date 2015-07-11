@@ -14,7 +14,7 @@ angular.module('mcApp', [
         $routeProvider
             .when("/quick-links", {
                 controller: "quickLinksController",
-                templateUrl: "angular_app/quick-links/views/ql.view.html"
+                templateUrl: "angular_app/quick-links/views/quick-links.view.html"
             })
             .otherwise({ 
                 redirectTo: "/" 
