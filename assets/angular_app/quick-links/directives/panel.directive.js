@@ -6,26 +6,29 @@ angular.module('mcApp.quickLinks')
             templateUrl : 'angular_app/quick-links/views/panel.partial.view.html',
             controllerAs : 'ctrl',
             scope : {
-                name : '=',
-                title : '=',
-                text : '=',
-                linkHref : '=',
-                linkText : '='
+                name : '@pnName',
+                title : '@pnTitle',
+                text : '@pnText',
+                linkHref : '@pnLinkHref',
+                linkText : '@pnLinkText'
             },
             link : function(scope, element, attrs) {
                 scope.panel = {
                     badge : {
-                        name : "Badge Name",
-                        title : "Badge Title"
+                        name : scope.name,
+                        title : scope.title
                     },
-                    text : "Panel Text",
+                    text : scope.text,
                     link : {
-                        href : "link href",
-                        text : "Link text"
+                        href : scope.linkHref,
+                        text : scope.linkText
                     }
                 };
-            },
-
+                scope.customBackground = {
+                   "background" : "url(img/jira_board.png) center top",
+                   "background-size" : "cover"
+                };
+            }
         };
     }
 );

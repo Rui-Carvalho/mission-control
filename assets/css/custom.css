@@ -2,3 +2,49 @@
       border-radius: 40%;
 }
 
+.my-sticky-class .gritter-image {
+    width: 50px;
+    height: 24px;
+    margin-top: 3px;
+}
+
+.my-sticky-class .gritter-title {
+    font-size: 13px;
+}
+
+.content-panel {
+    min-height: 185px;
+}
+
+.content-panel .blog-bg {
+	background: url(../img/blog-bg.jpg) no-repeat center top;
+	margin-top: -15px;
+	background-attachment: relative;
+	background-position: center center;
+	min-height: 180px;
+	width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.content-panel .blog-bg .badge {
+	position: absolute;
+	top: 20px;
+	left: 35px;
+}
+
+.content-panel .blog-title {
+    background: rgba(0,0,0,0.5);
+    bottom: 70px;
+    padding: 6px;
+    color: white;
+    font-weight: 700;
+    position: absolute;
+    display: block;
+    width: 120px;
+}
