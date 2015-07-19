@@ -1,11 +1,11 @@
 <div class="col-lg-4 col-md-4 col-sm-4 mb"><!-- --Panel item-- -->
     <div class="content-panel pn">
         <div class="blog-bg" ng-style="customBackground">
-            <a href="{{ panel.link.href }}" target="_blank"><div class="badge badge-popular">{{ panel.badge.name }}</div></a>
-            <a href="{{ panel.link.href }}" target="_blank"><div class="blog-title">{{ panel.badge.title }}</div></a>
+            <a href="{{ panel.linkhref }}" target="_blank"><div class="badge badge-popular">{{ panel.name }}</div></a>
+            <a href="{{ panel.linkhref }}" target="_blank"><div class="blog-title">{{ panel.title }}</div></a>
         </div>
         <div class="blog-text">
-        <p>{{ panel.text}} &nbsp;&nbsp; <a ng-href="{{ panel.link.href }}" target="_blank">{{ panel.link.text }}</a></p>
+        <p>{{ panel.text }} &nbsp;&nbsp; <a ng-href="{{ panel.linkhref }}" target="_blank">{{ panel.linktext }}</a></p>
         </div>
     </div>
 </div><!-- /col-md-4-->
