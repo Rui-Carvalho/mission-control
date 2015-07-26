@@ -9,7 +9,8 @@ angular.module('mcApp.quickLinks')
                 title : '@pnTitle',
                 text : '@pnText',
                 linkHref : '@pnLinkHref',
-                linkText : '@pnLinkText'
+                linkText : '@pnLinkText',
+                imgFile : '@pnImgFile'
             },
             link : function(scope, element, attrs) {
                 scope.panel = {
@@ -17,10 +18,11 @@ angular.module('mcApp.quickLinks')
                     title : scope.title,
                     text : scope.text,
                     linkhref : scope.linkHref,
-                    linktext : scope.linkText
-                };
+                    linktext : scope.linkText,
+                    imgFile : scope.imgFile
+                }; 
                 scope.customBackground = {
-                   "background" : "url(img/jira_board.png) center top",
+                   "background" : "url(img/thumbnails/" + scope.panel.imgFile + ") center top",
                    "background-size" : "cover"
                 };
             }

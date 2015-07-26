@@ -1,5 +1,5 @@
 angular.module('mcApp.quickLinks')
-    .directive('panelsGroup', function() {
+    .directive('panelsGroup', function(QuickLinksService) {
         return {
             restrict : 'E',
             replace: true,
@@ -8,23 +8,10 @@ angular.module('mcApp.quickLinks')
                 panelList : "=panellist"
             },
             link : function(scope, element, attrs) {
-                scope.panelList = [
-                    {
-                        name : 'Jira',
-                        title : 'Jira',
-                        text : 'Project Management tool used in BoF Agile software development. Stories can be found in the backlog then selected for sprint backlogs.',
-                        linkhref : 'https://d-labs.atlassian.net/login',
-                        linktext : 'Jira Board'
-                    },
-                    {
-                        name : 'nm',
-                        title : 'tt',
-                        text : 'tx',
-                        linkhref : 'lh',
-                        linktext : 'lt'
-                    }
-
-                ];
+               QuickLinksService.getQuickLinks()
+                   .then(function(data) {
+                       scope.panelList = data;
+                   }); 
             }
         };
     }

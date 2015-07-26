@@ -1,17 +1,20 @@
 angular.module('mcApp.quickLinks')
-    .service('QuickLinksService', function (QuickLinkRepository) {
+    .factory('QuickLinksService', function ($q, QuickLinksRepository) {
 
-        self.getAll = function () {
-            var promise = QuickLinkRepository.getAll()
-                .$promise
+        var getQuickLinks = function () {
+            var deferred = $q.defer();
+            QuickLinksRepository.getQuickLinks() 
                 .then(
-                function (res) {
-                    return res;
-                }
-            );
-            return promise;
+                    function (data) {
+                        deferred.resolve(data);
+                    }
+                );
+            return deferred.promise;
+        };
+
+        return { // return factory object
+            getQuickLinks : getQuickLinks
         };
 
     }
 );
-
